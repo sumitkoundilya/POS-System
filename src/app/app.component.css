@@ -1,0 +1,25 @@
+.container {
+  width: 95%;
+  text-align: center;
+  margin: auto;
+  padding: 10px;
+}
+
+.products{
+  height: 95vh;
+  width: 57.5%;
+  /* text-align: center; */
+  background: rgb(240, 244, 245);
+  border-radius: 5px;
+  float: right;
+  overflow: auto;
+}
+
+.cart{
+  height: 95vh;
+  width: 42%;
+  border-radius: 5px;
+  float: left;
+  overflow: auto;
+  background-color: rgb(240, 244, 245);
+}

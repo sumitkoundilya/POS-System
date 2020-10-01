@@ -1,0 +1,7 @@
+<div *ngFor="let product of products" (click)="addItems(product)">
+  <div class="pictureDiv" *ngIf="product.image">
+    <img src="../../assets/{{product.image}}" alt="">
+  </div>
+
+  <div *ngIf="!product.image" class="noImage" [ngStyle]="{'background-color': getColour(product)}"></div>
+</div>

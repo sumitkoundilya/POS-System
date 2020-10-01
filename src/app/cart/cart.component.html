@@ -1,0 +1,65 @@
+<div class="cartDiv">
+  <table>
+    <tr>
+      <th>Product</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Total</th>
+    </tr>
+
+    <tr *ngFor="let item of this.billingService.cartItems | keyvalue">
+      <td>{{item.value.Product}}</td>
+      <td>{{item.value.Price.toFixed(3)}}</td>
+      <td>
+        <button class="minusButton" (click)="reduceQuantity(item)">-</button>
+        <input readonly type="text" class="quantityBox" value="{{item.value.Quantity}}">
+        <button class="plusButton" (click)="addQuantity(item)">+</button>
+      </td>
+      <td>{{item.value.Total.toFixed(3)}}</td>
+    </tr>
+  </table>
+  <div *ngIf="isCartEmpty()" class="noItem">
+    <p>THERE ARE NO PRODUCTS</p>
+  </div>
+</div>
+
+<div class="billDiv">
+  <table>
+    <tr class="billTable">
+      <th>SubTotal</th>
+      <td class="billTable">
+        <span class="leftSpan">{{this.billingService.subTotal}}</span>
+        <span class="rightSpan">{{this.billingService.items}}</span>
+      </td>
+    </tr>
+    <tr class="billTable">
+      <th>VAT tax</th>
+      <td class="billTable">
+        <span class="leftSpan">{{this.billingService.vatTax}}</span>
+        <span class="rightSpan">{{this.billingService.taxValue}}</span>
+      </td>
+    </tr>
+    <tr class="billTable">
+      <th>Discount</th>
+      <td class="billTable">
+        <span class="leftSpan">{{this.billingService.discount}}</span>
+        <span class="rightSpan">{{this.billingService.discountValue}}</span>
+      </td>
+    </tr>
+    <tr class="billTable">
+      <th>Total</th>
+      <td class="billTable">
+        <span class="leftSpan">{{this.billingService.total}}</span>
+      </td>
+    </tr>
+  </table>
+
+  <button class="cancel" (click)="reset()">CANCEL SALE</button>
+  <button class="process" (click)="openModal('custom-modal-1');">PROCESS SALE</button>
+</div>
+
+<jw-modal id="custom-modal-1">
+  <h1>A Custom Modal!</h1>
+  <p>Home page text: <input type="text" /></p>
+  <button (click)="closeModal('custom-modal-1');">Close</button>
+</jw-modal>

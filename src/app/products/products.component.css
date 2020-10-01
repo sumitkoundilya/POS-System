@@ -1,0 +1,23 @@
+.pictureDiv {
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 10px;
+  float: left;
+}
+
+.noImage {
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 10px;
+  float: left;
+}
+
+img{
+  width: 80px;
+  height: 80px;
+  border-radius: 5px;
+}

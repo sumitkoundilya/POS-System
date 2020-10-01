@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "POS-System"
+    }
+  },
+  "defaultProject": "POS-System",
+  "cli": {
+    "analytics": "e73f1034-6e81-46e4-8fd4-49f83f6af23e"
+  }
 }
