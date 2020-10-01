@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { PopUpService } from '../services/pop-up.service';
 import { BillingService } from '../services/billing.service';
 
@@ -8,10 +8,19 @@ import { BillingService } from '../services/billing.service';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
+  saleNumber: string;
+  date: string;
+  cartItems: any;
 
-  constructor(public billingService: BillingService, private popUpService: PopUpService) { }
+  constructor(public billingService: BillingService, private popUpService: PopUpService, private cdr: ChangeDetectorRef) { }
 
   ngOnInit(): void {
+    this.saleNumber = this.getSaleNo();
+    this.date = this.getDateAndTime();
+  }
+
+  ngAfterViewChecked() {
+    this.cdr.detectChanges();
   }
 
   reduceQuantity(item: any) {
@@ -55,5 +64,13 @@ export class CartComponent implements OnInit {
 
   closeModal(id: string) {
     this.popUpService.close(id);
+  }
+
+  getSaleNo() {
+    return (Math.random() * (9999 - 1000) + 1000).toFixed(0);
+  }
+
+  getDateAndTime() {
+    return new Date().toLocaleString();
   }
 }

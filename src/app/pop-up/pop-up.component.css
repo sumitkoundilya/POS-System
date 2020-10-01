@@ -13,9 +13,10 @@ jw-modal .jw-modal {
 }
 
 jw-modal .jw-modal .jw-modal-body {
-  padding: 20px;
   background: #fff;
   margin: 40px;
+  text-align: center;
+  width: 25%;
 }
 
 jw-modal .jw-modal-background {
@@ -31,4 +32,18 @@ jw-modal .jw-modal-background {
 
 body.jw-modal-open {
   overflow: hidden;
+}
+
+Table {
+  font-family: eagle lake;
+  border-collapse: collapse;
+  width: 90%;
+}
+
+td,
+th {
+  /* border: 1px solid #dddddd; */
+  text-align: left;
+  padding: 8px;
+  text-align: center;
 }

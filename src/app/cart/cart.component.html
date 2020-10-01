@@ -1,6 +1,7 @@
 <div class="cartDiv">
   <table>
     <tr>
+      <th></th>
       <th>Product</th>
       <th>Price</th>
       <th>Quantity</th>
@@ -8,6 +9,9 @@
     </tr>
 
     <tr *ngFor="let item of this.billingService.cartItems | keyvalue">
+      <td>
+        <button class="deleteButton" (click)="removeItem(item)">x</button>
+      </td>
       <td>{{item.value.Product}}</td>
       <td>{{item.value.Price.toFixed(3)}}</td>
       <td>
@@ -55,11 +59,52 @@
   </table>
 
   <button class="cancel" (click)="reset()">CANCEL SALE</button>
-  <button class="process" (click)="openModal('custom-modal-1');">PROCESS SALE</button>
+  <button [disabled]="isCartEmpty()" class="process" (click)="openModal('custom-modal-1');">PROCESS SALE</button>
 </div>
 
 <jw-modal id="custom-modal-1">
-  <h1>A Custom Modal!</h1>
-  <p>Home page text: <input type="text" /></p>
-  <button (click)="closeModal('custom-modal-1');">Close</button>
+  <div class="receiptHeader">
+    <span>Receipt</span>
+  </div>
+  <div style="padding: 15px;">
+    <h3>Sale No.:.:{{saleNumber}}</h3>
+    <h5 style="text-align: left;">Date:{{date}}</h5>
+
+    <table>
+      <tr>
+        <th>#</th>
+        <th>Products</th>
+        <th>Quantity</th>
+        <th>SubTotal</th>
+      </tr>
+
+      <tr *ngFor="let item of this.billingService.cartItems | keyvalue; let i=index">
+        <td>{{i+1}}</td>
+        <td>{{item.value.Product}}</td>
+        <td>{{item.value.Quantity}}</td>
+        <td>{{item.value.Total.toFixed(3)}}</td>
+      </tr>
+    </table>
+
+    <hr>
+    <span>Total Items</span>
+    <span style="margin-left: 15px;">{{this.billingService.items.replace(' Items','')}}</span>
+    <span style="margin-left: 5px;">SubTotal</span>
+    <span style="margin-left: 15px;">{{this.billingService.total}}</span>
+
+    <hr>
+    <span>Discount</span>
+    <span style="margin-left: 15px;">10%</span>
+    <span style="margin-left: 15px;">{{this.billingService.discountValue}}</span>
+    <hr>
+    <span>VAT</span>
+    <span style="margin-left: 15px;">10%</span>
+    <span style="margin-left: 15px;">{{this.billingService.taxValue}}</span>
+    <hr>
+    <span>Total</span>
+    <span style="margin-left: 15px;">{{this.billingService.total}}</span>
+    <hr>
+
+    <button class="close" (click)="closeModal('custom-modal-1');reset()">Close</button>
+  </div>
 </jw-modal>

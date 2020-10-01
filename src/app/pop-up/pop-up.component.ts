@@ -1,8 +1,9 @@
+import { BillingService } from './../services/billing.service';
 import { PopUpService } from '../services/pop-up.service';
 import { Component, ElementRef, Input, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
 
 @Component({
-  selector: 'app-pop-up',
+  selector: 'jw-modal',
   templateUrl: './pop-up.component.html',
   styleUrls: ['./pop-up.component.css'],
   encapsulation: ViewEncapsulation.None
@@ -12,7 +13,7 @@ export class PopUpComponent implements OnInit, OnDestroy {
   private element: any;
   @Input() id: string;
 
-  constructor(private popUpService: PopUpService, private el: ElementRef) {
+  constructor(private popUpService: PopUpService, private el: ElementRef, public billingService: BillingService) {
     this.element = el.nativeElement;
   }
 

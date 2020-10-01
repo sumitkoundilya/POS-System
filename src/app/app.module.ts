@@ -16,8 +16,8 @@ import { CartComponent } from './cart/cart.component';
   ],
   imports: [
     BrowserModule,
+    PopUpModule,
     AppRoutingModule,
-    PopUpModule
   ],
   providers: [],
   bootstrap: [AppComponent],
